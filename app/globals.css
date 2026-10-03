@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* lets you also use dark: utilities in future components */
+@custom-variant dark (&:where(.dark, .dark *));
+
 body {
     background: #f8fafc;
     color: #0f172a;
@@ -63,5 +66,54 @@ body {
     .animate-float,
     .text-gradient {
         animation: none;
+    }
+}
+
+/* ---------- Dark mode ---------- */
+.dark {
+    color-scheme: dark;
+}
+
+/* dark inputs, textareas, scrollbars */
+.dark body {
+    background: #020617;
+    color: #e2e8f0;
+}
+
+.dark {
+    --color-slate-50: #0b1224;
+    --color-slate-100: #1e293b;
+    --color-slate-200: #273449;
+    --color-slate-300: #334155;
+    --color-slate-400: #64748b;
+    --color-slate-500: #94a3b8;
+    --color-slate-600: #cbd5e1;
+    --color-slate-700: #e2e8f0;
+    --color-slate-800: #f1f5f9;
+    --color-slate-900: #f8fafc;
+    --color-blue-50: #14213d;
+    --color-blue-200: #1e40af;
+    --color-blue-700: #93c5fd;
+    --color-blue-800: #bfdbfe;
+    --color-violet-50: #1e1b4b;
+    --color-red-50: #450a0a;
+    --color-red-700: #fca5a5;
+    --color-green-50: #052e16;
+    --color-green-200: #166534;
+}
+
+/* white is also used for button text, so only the *backgrounds* are overridden.
+   :where() keeps specificity low so hover states still win. */
+@layer utilities {
+    :where(.dark) .bg-white {
+        background-color: #0f172a;
+    }
+
+    :where(.dark) [class*="bg-white/"] {
+        background-color: rgb(15 23 42 / 0.75);
+    }
+
+    :where(.dark) .bg-slate-900\/40 {
+        background-color: rgb(0 0 0 / 0.6);
     }
 }

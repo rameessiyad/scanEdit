@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 
 export default function SiteHeader() {
   return (
@@ -7,13 +8,14 @@ export default function SiteHeader() {
         <Link href="/" className="font-semibold text-slate-900">
           ScanEdit
         </Link>
-        <nav className="flex gap-5 text-sm text-slate-600">
+        <nav className="flex items-center gap-5 text-sm text-slate-600">
           <Link href="/" className="hover:text-slate-900">
             Editor
           </Link>
           <Link href="/tools" className="hover:text-slate-900">
             Tools
           </Link>
+          <ThemeToggle />
         </nav>
       </div>
     </header>
